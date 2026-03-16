@@ -6,8 +6,422 @@
     <title>JM Electroshop - Hogar, Bazar y Regalería</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Font Awesome para WhatsApp (versión 4) -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+        /* Fondo general con gradiente claro y colorido */
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header con gradiente más vibrante */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin: 0;
+        }
+
+        header h1 span {
+            color: #ffd700;
+            font-weight: 300;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .badge-oficial {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 1.1em;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Navegación más moderna */
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 20px 20px 0 20px;
+            border-radius: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.activo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        /* Banner de ofertas */
+        .banner-ofertas {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 30px 20px;
+            border-radius: 30px;
+            box-shadow: 0 15px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .banner-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .banner-precio {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .btn-banner {
+            background: white;
+            color: #ff6b6b;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-banner:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Títulos de sección */
+        .productos {
+            padding: 40px 0;
+        }
+
+        .productos h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin: 40px 0;
+            color: #333;
+            position: relative;
+        }
+
+        .productos h2:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        .productos h2 i {
+            margin-right: 10px;
+            color: #667eea;
+        }
+
+        /* Grid de productos mejorado */
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        /* Tarjetas de producto más vistosas */
+        .producto-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .producto-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            background: #f0f0f0;
+        }
+
+        .producto-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .producto-card:hover .producto-img img {
+            transform: scale(1.1);
+        }
+
+        .producto-info {
+            padding: 25px;
+            background: white;
+            position: relative;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .producto-info h3 {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .descripcion {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .precio {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 15px 0;
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-comprar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            margin-top: 10px;
+        }
+
+        .btn-comprar:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Botón flotante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            line-height: 70px;
+            text-decoration: none;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.2);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Modal mejorado */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 15% auto;
+            padding: 40px;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s;
+            position: relative;
+        }
+
+        @keyframes modalSlideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25d366 0%, #128C7E 100%);
+            color: white;
+        }
+
+        .mp-btn {
+            background: linear-gradient(135deg, #00a650 0%, #008040 100%);
+            color: white;
+        }
+
+        .cancel-btn {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .cancel-btn:hover {
+            background: #ccc;
+        }
+
+        /* Footer mejorado */
+        footer {
+            background: linear-gradient(135deg, #333 0%, #222 100%);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .footer-section p {
+            margin: 10px 0;
+            color: #ddd;
+        }
+
+        .footer-section i {
+            margin-right: 10px;
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0 0;
+            border-top: 1px solid #444;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5em; }
+            nav ul { flex-direction: column; align-items: center; gap: 10px; }
+            .banner-content h2 { font-size: 1.8em; }
+            .banner-precio { font-size: 1.5em; }
+            .productos h2 { font-size: 2em; }
+            .whatsapp-float { width: 60px; height: 60px; font-size: 30px; line-height: 60px; }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,7 +429,7 @@
             <h1>JM<span>Electroshop</span></h1>
             <p>Todo para tu hogar • Bazar • Regalería</p>
             <div class="badge-oficial">
-                <i class="fas fa-truck"></i> Envíos a todo el oeste
+                <i class="fas fa-truck"></i> Envíos a Marcos Paz y Gral. Las Heras
             </div>
         </div>
     </header>
@@ -28,7 +442,6 @@
                 <li><a href="#hogar">🛏️ Hogar</a></li>
                 <li><a href="#muebles">🪑 Muebles</a></li>
                 <li><a href="#regaleria">🎁 Regalería</a></li>
-                <li><a href="#ofertas">🔥 Ofertas</a></li>
             </ul>
         </div>
     </nav>
@@ -38,10 +451,10 @@
         <section class="banner-ofertas">
             <div class="container">
                 <div class="banner-content">
-                    <h2>🇦🇷 ¡NUEVOS INGRESOS!</h2>
+                    <h2>🇦🇷 ¡OFERTAS IMPERDIBLES!</h2>
                     <p>Alfombras Campomayo • Botellones Capibara • Chopp cervecero</p>
-                    <p class="banner-precio">2 cuotas sin interés</p>
-                    <a href="#novedades" class="btn-banner">Ver novedades</a>
+                    <p class="banner-precio">CONSULTANOS POR MAYOR</p>
+                    <a href="https://wa.me/5491155840248" class="btn-banner" target="_blank">PEDIR POR WhatsApp</a>
                 </div>
             </div>
         </section>
@@ -59,9 +472,9 @@
                         </div>
                         <div class="producto-info">
                             <h3>Chopp Cervecero Térmico</h3>
-                            <p class="descripcion">MUGW • 710ml • Mantiene la temperatura</p>
-                            <p class="precio">$12.500</p>
-                            <button class="btn-comprar" data-producto="Chopp Cervecero Térmico 710ml" data-precio="$12.500">Añadir al carrito</button>
+                            <p class="descripcion">MUGW • 710ml • Mantiene la temperatura por horas</p>
+                            <p class="precio">$22.000</p>
+                            <button class="btn-comprar" data-producto="Chopp Cervecero Térmico 710ml" data-precio="$22.000">Consultar</button>
                         </div>
                     </article>
 
@@ -73,25 +486,25 @@
                         <div class="producto-info">
                             <h3>Set 10 Tappers</h3>
                             <p class="descripcion">Aptos freezer, microondas y lavavajillas</p>
-                            <p class="precio">$18.900</p>
-                            <button class="btn-comprar" data-producto="Set 10 Tappers aptos freezer" data-precio="$18.900">Añadir al carrito</button>
+                            <p class="precio">$20.000</p>
+                            <button class="btn-comprar" data-producto="Set 10 Tappers" data-precio="$20.000">Consultar</button>
                         </div>
                     </article>
 
-                    <!-- Vasos Durax x6 -->
+                    <!-- Vasos Durax x4 -->
                     <article class="producto-card">
                         <div class="producto-img">
-                            <img src="assets/images/vasos%20durax.jpg" alt="Vasos Durax x6">
+                            <img src="assets/images/vasos%20durax.jpg" alt="Vasos Durax x4">
                         </div>
                         <div class="producto-info">
-                            <h3>Vasos Durax x6</h3>
+                            <h3>Vasos Durax x4</h3>
                             <p class="descripcion">Vidrio • Sello Buen Diseño Argentino</p>
-                            <p class="precio">$15.200</p>
-                            <button class="btn-comprar" data-producto="Vasos Durax vidrio x6" data-precio="$15.200">Añadir al carrito</button>
+                            <p class="precio">$12.000</p>
+                            <button class="btn-comprar" data-producto="Vasos Durax x4" data-precio="$12.000">Consultar</button>
                         </div>
                     </article>
 
-                    <!-- Termo 1.2L sin grabado -->
+                    <!-- Termo 1.2L -->
                     <article class="producto-card">
                         <div class="producto-img">
                             <img src="assets/images/termos%201.2lts%20sin%20grabados.jpg" alt="Termo 1.2 litros">
@@ -99,34 +512,47 @@
                         <div class="producto-info">
                             <h3>Termo 1.2 Litros</h3>
                             <p class="descripcion">Acero inoxidable • Sin grabado</p>
-                            <p class="precio">$21.500</p>
-                            <button class="btn-comprar" data-producto="Termo 1.2L acero inoxidable" data-precio="$21.500">Añadir al carrito</button>
+                            <p class="precio">$32.900</p>
+                            <button class="btn-comprar" data-producto="Termo 1.2L" data-precio="$32.900">Consultar</button>
                         </div>
                     </article>
 
-                    <!-- Botellas Hoppi -->
+                    <!-- Botella sport 500ml -->
                     <article class="producto-card">
                         <div class="producto-img">
-                            <img src="assets/images/botellas%20hoppi.jpg" alt="Botellas Hoppi">
+                            <img src="assets/images/botellas%20sport.jpg" alt="Botella sport">
                         </div>
                         <div class="producto-info">
-                            <h3>Botella Hoppi 800ml</h3>
-                            <p class="descripcion">Tipo Stanley • Acero inoxidable</p>
-                            <p class="precio">$16.800</p>
-                            <button class="btn-comprar" data-producto="Botella Hoppi 800ml tipo Stanley" data-precio="$16.800">Añadir al carrito</button>
+                            <h3>Botella Sport 500ml</h3>
+                            <p class="descripcion">Ideal para gimnasio • Liviana</p>
+                            <p class="precio">$20.000</p>
+                            <button class="btn-comprar" data-producto="Botella Sport 500ml" data-precio="$20.000">Consultar</button>
                         </div>
                     </article>
 
-                    <!-- Escurridor de platos -->
+                    <!-- Botella Stanley 810ml -->
+                    <article class="producto-card">
+                        <div class="producto-img">
+                            <img src="assets/images/botellas%20hoppi.jpg" alt="Botella Stanley">
+                        </div>
+                        <div class="producto-info">
+                            <h3>Botella Stanley 810ml</h3>
+                            <p class="descripcion">Acero inoxidable • Mantiene temperatura</p>
+                            <p class="precio">$25.000</p>
+                            <button class="btn-comprar" data-producto="Botella Stanley 810ml" data-precio="$25.000">Consultar</button>
+                        </div>
+                    </article>
+
+                    <!-- Escurridor -->
                     <article class="producto-card">
                         <div class="producto-img">
                             <img src="assets/images/escurridor%20de%20platos.jpg" alt="Escurridor de platos">
                         </div>
                         <div class="producto-info">
-                            <h3>Escurridor de Plato.s</h3>
-                            <p class="descripcion">2 niveles • Acero cromado • Bandeja de plástico</p>
-                            <p class="precio">$14.300</p>
-                            <button class="btn-comprar" data-producto="Escurridor de platos 2 niveles" data-precio="$14.300">Añadir al carrito</button>
+                            <h3>Escurridor de Platos</h3>
+                            <p class="descripcion">2 niveles • Acero cromado</p>
+                            <p class="precio">$30.000</p>
+                            <button class="btn-comprar" data-producto="Escurridor de platos" data-precio="$30.000">Consultar</button>
                         </div>
                     </article>
                 </div>
@@ -139,16 +565,16 @@
                 <h2><i class="fas fa-home"></i> Hogar</h2>
                 
                 <div class="productos-grid">
-                    <!-- Alfombras Campomayo -->
+                    <!-- Alfombra campomayo -->
                     <article class="producto-card">
                         <div class="producto-img">
-                            <img src="assets/images/alfombras%20campomayo.jpg" alt="Alfombras Campomayo">
+                            <img src="assets/images/alfombras%20campomayo.jpg" alt="Alfombra Campomayo">
                         </div>
                         <div class="producto-info">
-                            <h3>Alfombra de Bijo</h3>
-                            <p class="descripcion">Campomayo • Senator Nilgon</p>
-                            <p class="precio">$22.900</p>
-                            <button class="btn-comprar" data-producto="Alfombra de Bijo Campomayo" data-precio="$22.900">Añadir al carrito</button>
+                            <h3>Alfombra Campomayo</h3>
+                            <p class="descripcion">De bijo • Senator Nilgon</p>
+                            <p class="precio">$12.900</p>
+                            <button class="btn-comprar" data-producto="Alfombra Campomayo" data-precio="$12.900">Consultar</button>
                         </div>
                     </article>
 
@@ -159,48 +585,22 @@
                         </div>
                         <div class="producto-info">
                             <h3>Cortinas Blackout</h3>
-                            <p class="descripcion">Campomayo • Bloquea la luz solar • Linea Look</p>
-                            <p class="precio">$19.500</p>
-                            <button class="btn-comprar" data-producto="Cortinas Blackout Campomayo" data-precio="$19.500">Añadir al carrito</button>
+                            <p class="descripcion">Campomayo • Bloquea la luz solar</p>
+                            <p class="precio">$38.000</p>
+                            <button class="btn-comprar" data-producto="Cortinas Blackout" data-precio="$38.000">Consultar</button>
                         </div>
                     </article>
 
-                    <!-- Cortina de baño + ganchos -->
+                    <!-- Cortina de baño bordada -->
                     <article class="producto-card">
                         <div class="producto-img">
                             <img src="assets/images/cortina%20de%20baño.jpg" alt="Cortina de baño">
                         </div>
                         <div class="producto-info">
-                            <h3>Cortina de Baño + Ganchos</h3>
-                            <p class="descripcion">Campomayo • Tela bordada • La Mejor</p>
-                            <p class="precio">$16.200</p>
-                            <button class="btn-comprar" data-producto="Cortina de baño con ganchos Campomayo" data-precio="$16.200">Añadir al carrito</button>
-                        </div>
-                    </article>
-
-                    <!-- Mantel Ecocuero -->
-                    <article class="producto-card">
-                        <div class="producto-img">
-                            <img src="assets/images/mantel%20ecocuero.jpg" alt="Mantel ecocuero">
-                        </div>
-                        <div class="producto-info">
-                            <h3>Mantel Ecocuero</h3>
-                            <p class="descripcion">2 x 1.40m • Fácil limpieza</p>
-                            <p class="precio">$12.800</p>
-                            <button class="btn-comprar" data-producto="Mantel ecocuero 2x1.40" data-precio="$12.800">Añadir al carrito</button>
-                        </div>
-                    </article>
-
-                    <!-- Set toallas Armonia -->
-                    <article class="producto-card">
-                        <div class="producto-img">
-                            <img src="assets/images/set%20toallas%20armonia.jpg" alt="Set toallas">
-                        </div>
-                        <div class="producto-info">
-                            <h3>Set 6 Toallas</h3>
-                            <p class="descripcion">2 salmón • 2 aqua • 2 gris • 83x46 cm</p>
-                            <p class="precio">$30.000</p>
-                            <button class="btn-comprar" data-producto="Set 6 toallas Armonia" data-precio="$30.000">Añadir al carrito</button>
+                            <h3>Cortina de Baño Bordada</h3>
+                            <p class="descripcion">Campomayo • Con ganchos</p>
+                            <p class="precio">$22.000</p>
+                            <button class="btn-comprar" data-producto="Cortina de baño bordada" data-precio="$22.000">Consultar</button>
                         </div>
                     </article>
 
@@ -212,8 +612,21 @@
                         <div class="producto-info">
                             <h3>Set Secado Rápido</h3>
                             <p class="descripcion">3 piezas • Textile Boutique</p>
-                            <p class="precio">$11.200</p>
-                            <button class="btn-comprar" data-producto="Set secado rápido 3 piezas" data-precio="$11.200">Añadir al carrito</button>
+                            <p class="precio">$20.000</p>
+                            <button class="btn-comprar" data-producto="Set secado rápido 3 piezas" data-precio="$20.000">Consultar</button>
+                        </div>
+                    </article>
+
+                    <!-- Mantel ecocuero -->
+                    <article class="producto-card">
+                        <div class="producto-img">
+                            <img src="assets/images/mantel%20ecocuero.jpg" alt="Mantel ecocuero">
+                        </div>
+                        <div class="producto-info">
+                            <h3>Mantel Ecocuero</h3>
+                            <p class="descripcion">2 x 1.40m • Fácil limpieza</p>
+                            <p class="precio">$12.000</p>
+                            <button class="btn-comprar" data-producto="Mantel ecocuero" data-precio="$12.000">Consultar</button>
                         </div>
                     </article>
                 </div>
@@ -226,16 +639,16 @@
                 <h2><i class="fas fa-chair"></i> Muebles</h2>
                 
                 <div class="productos-grid">
-                    <!-- Banquetas reforzadas -->
+                    <!-- Banquetas reforzadas x6 -->
                     <article class="producto-card">
                         <div class="producto-img">
                             <img src="assets/images/banquetas%20reforzadas.jpg" alt="Banquetas reforzadas">
                         </div>
                         <div class="producto-info">
-                            <h3>Banquetas Reforzadas</h3>
+                            <h3>Banquetas Reforzadas x6</h3>
                             <p class="descripcion">Zatecno • Estructura reforzada</p>
-                            <p class="precio">$32.500</p>
-                            <button class="btn-comprar" data-producto="Banquetas reforzadas Zatecno" data-precio="$32.500">Añadir al carrito</button>
+                            <p class="precio">$40.000</p>
+                            <button class="btn-comprar" data-producto="Banquetas reforzadas x6" data-precio="$40.000">Consultar</button>
                         </div>
                     </article>
                 </div>
@@ -251,52 +664,52 @@
                     <!-- Set cubiertos 25 piezas -->
                     <article class="producto-card">
                         <div class="producto-img">
-                            <img src="assets/images/set%20cunbiertos%2025%20piezas.jpg" alt="Set cubiertos 25 piezas">
+                            <img src="assets/images/set%20cunbiertos%2025%20piezas.jpg" alt="Set cubiertos">
                         </div>
                         <div class="producto-info">
                             <h3>Set Cubiertos 25 Piezas</h3>
-                            <p class="descripcion">Duave • 25 piezas</p>
-                            <p class="precio">$24.900</p>
-                            <button class="btn-comprar" data-producto="Set cubiertos 25 piezas Duave" data-precio="$24.900">Añadir al carrito</button>
+                            <p class="descripcion">Duave • Acero inoxidable</p>
+                            <p class="precio">$24.500</p>
+                            <button class="btn-comprar" data-producto="Set cubiertos 25 piezas" data-precio="$24.500">Consultar</button>
                         </div>
                     </article>
 
-                    <!-- Vasos vidrio x6 Corona/Heineken -->
+                    <!-- Botellón Capibara -->
                     <article class="producto-card">
                         <div class="producto-img">
-                            <img src="assets/images/vasos%20de%20vidrio%20x6.jpg" alt="Vasos vidrio x6">
+                            <img src="assets/images/botellones%20capibara.jpg" alt="Botellón Capibara">
                         </div>
                         <div class="producto-info">
-                            <h3>Vasos Vidrio x6</h3>
-                            <p class="descripcion">Corona / Heineken • Ideal para regalo</p>
-                            <p class="precio">$13.900</p>
-                            <button class="btn-comprar" data-producto="Vasos vidrio x6 Corona/Heineken" data-precio="$13.900">Añadir al carrito</button>
+                            <h3>Botellón Capibara 900ml</h3>
+                            <p class="descripcion">Capyba • Trus • ¡Tendencia!</p>
+                            <p class="precio">$28.000</p>
+                            <button class="btn-comprar" data-producto="Botellón Capibara 900ml" data-precio="$28.000">Consultar</button>
                         </div>
                     </article>
 
-                    <!-- Botellones Capibara -->
-                    <article class="producto-card">
-                        <div class="producto-img">
-                            <img src="assets/images/botellones%20capibara.jpg" alt="Botellones capibara">
-                        </div>
-                        <div class="producto-info">
-                            <h3>Botellón Capibara</h3>
-                            <p class="descripcion">900ml • Capyba • Trus • ¡Tendencia!</p>
-                            <p class="precio">$9.900</p>
-                            <button class="btn-comprar" data-producto="Botellón Capibara 900ml" data-precio="$9.900">Añadir al carrito</button>
-                        </div>
-                    </article>
-
-                    <!-- Chopp Santa Fe x2 caja -->
+                    <!-- Chopp Santa Fe x2 -->
                     <article class="producto-card">
                         <div class="producto-img">
                             <img src="assets/images/chop.jpg" alt="Chopp Santa Fe">
                         </div>
                         <div class="producto-info">
                             <h3>Chopp Santa Fe x2</h3>
-                            <p class="descripcion">500ml c/u • Presentación en caja • Ideal regalo</p>
-                            <p class="precio">$17.500</p>
-                            <button class="btn-comprar" data-producto="Chopp Santa Fe x2 en caja" data-precio="$17.500">Añadir al carrito</button>
+                            <p class="descripcion">500ml c/u • Presentación en caja</p>
+                            <p class="precio">$12.500</p>
+                            <button class="btn-comprar" data-producto="Chopp Santa Fe x2" data-precio="$12.500">Consultar</button>
+                        </div>
+                    </article>
+
+                    <!-- Vasos de vidrio lunares x6 -->
+                    <article class="producto-card">
+                        <div class="producto-img">
+                            <img src="assets/images/vasos%20de%20vidrio%20x6.jpg" alt="Vasos lunares">
+                        </div>
+                        <div class="producto-info">
+                            <h3>Vasos Lunares x6</h3>
+                            <p class="descripcion">Marca Durax • Diseño exclusivo</p>
+                            <p class="precio">$20.000</p>
+                            <button class="btn-comprar" data-producto="Vasos lunares x6" data-precio="$20.000">Consultar</button>
                         </div>
                     </article>
                 </div>
@@ -310,28 +723,28 @@
                 <div class="footer-section">
                     <h3>JM Electroshop</h3>
                     <p>Todo para tu hogar • Bazar • Regalería</p>
-                    <p>🇦🇷 Zona Oeste - Buenos Aires</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Zona Oeste: Marcos Paz | Gral. Las Heras</p>
                 </div>
                 <div class="footer-section">
                     <h3>Contacto</h3>
-                    <p><i class="fab fa-whatsapp"></i> +54 9 11 1234-5678</p>
+                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/5491155840248" style="color: white; text-decoration: none;">+54 9 11 5584-0248</a></p>
                     <p><i class="fas fa-envelope"></i> info@jmelectroshop.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Ramos Mejía, Morón, Castelar</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Seguinos</h3>
-                    <p><i class="fab fa-instagram"></i> @jm.electroshop</p>
-                    <p><i class="fab fa-facebook"></i> JM Electroshop</p>
+                    <h3>Horarios</h3>
+                    <p>Lunes a Viernes: 9:00 - 20:00</p>
+                    <p>Sábados: 9:00 - 13:00</p>
+                    <p>Domingos: Cerrado</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 JM Electroshop - Todos los derechos reservados</p>
+                <p>&copy; 2025 JM Electroshop - Todos los derechos reservados</p>
             </div>
         </div>
     </footer>
 
     <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-    <a href="https://api.whatsapp.com/send?phone=5491123456789&text=Hola!%20Quiero%20consultar%20sobre%20un%20producto%20de%20JM%20Electroshop" 
+    <a href="https://api.whatsapp.com/send?phone=5491155840248&text=Hola!%20Quiero%20consultar%20sobre%20un%20producto%20de%20JM%20Electroshop" 
        class="whatsapp-float" target="_blank">
         <i class="fa fa-whatsapp"></i>
     </a>
@@ -340,16 +753,13 @@
     <div id="modal-compra" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <h3>🛒 Confirmar compra</h3>
-            <div id="producto-seleccionado" style="margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 8px;">
+            <h3 style="margin-top: 0;">🛒 Consultar producto</h3>
+            <div id="producto-seleccionado" style="margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 15px;">
                 <!-- Acá se llena con JS -->
             </div>
             <p>¿Cómo querés continuar?</p>
             <button id="btn-whatsapp-modal" class="modal-btn whatsapp-btn">
                 <i class="fa fa-whatsapp"></i> Consultar por WhatsApp
-            </button>
-            <button id="btn-mercadopago" class="modal-btn mp-btn">
-                <i class="fa fa-credit-card"></i> Pagar con MercadoPago
             </button>
             <button class="modal-btn cancel-btn" onclick="cerrarModal()">
                 Seguir viendo
@@ -357,154 +767,21 @@
         </div>
     </div>
 
-    <style>
-        /* Estilos para el botón flotante de WhatsApp */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 100;
-            line-height: 60px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .whatsapp-float:hover {
-            background-color: #128C7E;
-            transform: scale(1.1);
-        }
-        
-        /* Estilos para el modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            animation: fadeIn 0.3s;
-        }
-        
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            max-width: 450px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
-            position: relative;
-            animation: slideIn 0.3s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .close-modal {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: absolute;
-            right: 20px;
-            top: 10px;
-        }
-        
-        .close-modal:hover {
-            color: black;
-        }
-        
-        .modal-btn {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .whatsapp-btn {
-            background-color: #25d366;
-            color: white;
-        }
-        
-        .whatsapp-btn:hover {
-            background-color: #128C7E;
-        }
-        
-        .mp-btn {
-            background-color: #00a650;
-            color: white;
-        }
-        
-        .mp-btn:hover {
-            background-color: #008040;
-        }
-        
-        .cancel-btn {
-            background-color: #e0e0e0;
-            color: #333;
-        }
-        
-        .cancel-btn:hover {
-            background-color: #ccc;
-        }
-        
-        #producto-seleccionado h4 {
-            margin: 0 0 10px 0;
-            color: #333;
-        }
-        
-        #producto-seleccionado .precio-modal {
-            font-size: 1.3em;
-            color: #27ae60;
-            font-weight: bold;
-        }
-    </style>
-
     <script>
-        // Variables para el modal
+        // Número de WhatsApp actualizado
+        const WHATSAPP_NUMBER = '5491155840248';
+        
         const modal = document.getElementById('modal-compra');
         const productoSeleccionado = document.getElementById('producto-seleccionado');
         const btnWhatsappModal = document.getElementById('btn-whatsapp-modal');
         const spanClose = document.querySelector('.close-modal');
         
-        // Número de WhatsApp (CAMBIALO POR TU NÚMERO REAL)
-        const WHATSAPP_NUMBER = '5491155840248'; // Ej: 5491123456789
-        
-        // Función para abrir modal
         function abrirModal(producto, precio) {
             productoSeleccionado.innerHTML = `
-                <h4>${producto}</h4>
-                <p class="precio-modal">${precio}</p>
+                <h4 style="margin:0 0 10px 0; color:#333;">${producto}</h4>
+                <p style="font-size:1.5em; color:#667eea; font-weight:bold; margin:0;">${precio}</p>
             `;
             
-            // Actualizar link de WhatsApp
             const mensaje = `Hola! Quiero comprar: ${producto} (${precio})`;
             btnWhatsappModal.onclick = function() {
                 window.open(`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(mensaje)}`, '_blank');
@@ -514,38 +791,28 @@
             modal.style.display = 'block';
         }
         
-        // Función para cerrar modal
         function cerrarModal() {
             modal.style.display = 'none';
         }
         
-        // Event listeners para botones de compra
         document.querySelectorAll('.btn-comprar').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                const producto = this.getAttribute('data-producto') || this.closest('.producto-card').querySelector('h3').textContent;
-                const precio = this.getAttribute('data-precio') || this.closest('.producto-card').querySelector('.precio').textContent;
+                const producto = this.getAttribute('data-producto');
+                const precio = this.getAttribute('data-precio');
                 abrirModal(producto, precio);
             });
         });
         
-        // Cerrar modal con X
         spanClose.onclick = cerrarModal;
         
-        // Cerrar modal haciendo click fuera
         window.onclick = function(event) {
             if (event.target == modal) {
                 cerrarModal();
             }
         };
         
-        // Botón de MercadoPago (ejemplo)
-        document.getElementById('btn-mercadopago').onclick = function() {
-            alert('🔧 Próximamente: Pago con MercadoPago. Por ahora, usá WhatsApp para consultar.');
-            // Acá después podés agregar el link real de MercadoPago
-        };
-        
-        console.log('🚀 JM Electroshop - Listo para vender!');
+        console.log('🚀 JM Electroshop - Versión Final');
     </script>
 
     <script src="assets/js/main.js"></script>
